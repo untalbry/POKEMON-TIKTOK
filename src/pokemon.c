@@ -8,11 +8,33 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <locale.h>
+
 int main (){
-    int charmaner_PH = 10;
-    int squirtle_PH = 10;
-    int option;
+    //Set languaje to Spanish 
+    setlocale (LC_ALL,"spanish");
+
+    int const CHARMANDER = 10;
+    int const SQUIRTLE = 10;
+    int charmaner_PH = CHARMANDER;
+    int squirtle_PH = SQUIRTLE;
+    int bar1, bar2, option;
     while (charmaner_PH > 0 && squirtle_PH > 0){
+        //Modify HP bars values
+        bar1 = charmaner_PH * 10 / CHARMANDER;
+        bar2 = squirtle_PH * 10 / SQUIRTLE;
+        //Print HP Bars
+        //PH CHARMANDER BAR
+        printf("Charmander PH:%d[", charmaner_PH);
+        for(int x=0; x<bar1; x++)printf("#");
+        for(int x=0; x<10-bar1; x++)printf(" ");
+        printf("]\n");
+        //PH SQUIRTLE BAR
+        printf("Squirtle PH:%d[", squirtle_PH);
+        for(int x=0; x<bar2; x++)printf("#");
+        for(int x=0; x<10-bar2; x++)printf(" ");
+        printf("]\n\n");
+        //Users turn
         printf("Tu turno . . .\n");
         printf("Selecciona un ataque:\n1)ASCUAS\n2)GRUÑIDO\n3)MORDIZCO\n4)GARRA_METAL\n");
         scanf("%d", &option);
@@ -42,8 +64,10 @@ int main (){
             printf("Selecciona una opcion valida\n");
             break;
         }
+        //Oponent turns
         printf("Turno de Squirtle . . . \n");
-    printf("Charmander recibe 2 de daño\n");
+        printf("Charmander recibe 2 de daño\n");
+        charmaner_PH -= 2;
     }
     
     return 0;
